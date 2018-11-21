@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="{% static  'bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
+	<title>Document</title>
+</head>
+<body>
+	{% include "navbar.html" %}
+	<div class="container">
+        {% block content %}
+    
+        {% endblock %}     
+    </div>
+
+    <script type="text/javascript" src="{% static 'bootstrap4/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap4/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
