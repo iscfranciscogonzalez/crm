@@ -28,5 +28,3 @@ class Tasks(models.Model):
 	tsk_createDate = models.DateTimeField(auto_now_add=True, null=False)
 	tsk_targetDate = models.DateTimeField(null=False)
 	tsk_finishDate = models.DateTimeField(auto_now=True, null=False)
-
-

@@ -2,14 +2,13 @@ from django.db import models
 from Departments.models import Departments
 
 # Create your models here.
-
 class UsersTypes(models.Model):
 	uty_id = models.AutoField(primary_key=True)
 	uty_type = models.CharField(max_length=256, null=False)
 
 	def __str__(self):
 		return self.uty_type
-		
+
 class Users(models.Model):
 	usr_id = models.AutoField(primary_key=True)
 	usr_name = models.CharField(max_length=256, null=False)
