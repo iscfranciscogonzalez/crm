@@ -16,7 +16,7 @@ class Index(generic.ListView):
 		print(self.request.GET)
 		query = self.request.GET.get("q", None)
 		if query is not None:
-			qs = qs.filter(Q(cmp_name=query) | Q(cmp_id=query))
+			qs = qs.filter(Q(cmp_name__icontains=query) | Q(cmp_id__icontains=query))
 		return qs
 		
 	def get_context_data(self, *args, **kwargs):
