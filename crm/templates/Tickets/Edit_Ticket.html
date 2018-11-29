@@ -1,1 +1,23 @@
-Edit_Ticket.html
+{% extends "base.html" %}
+
+{% block title %}Edit Ticket{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    {{object.tck_name}}
+  </div>
+  <div class="card-body">
+    <form method="post">
+		{% csrf_token%}
+		{{ form.as_p }}
+		<button class="btn btn-primary">Edit</button>
+		<button class="btn btn-warning">Cancel</button>
+	</form>
+  </div>
+</div>
+
+	
+	
+		
+{% endblock %}

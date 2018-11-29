@@ -42,7 +42,7 @@ class Edit_Company(generic.UpdateView):
 	success_url = "/Companies"
 
 class Delete_Company(generic.DeleteView):
-	template_name = 'Companies/.html'
+	template_name = 'Companies/Delete_Company.html'
 	model = Companies
 	success_url = ''
 

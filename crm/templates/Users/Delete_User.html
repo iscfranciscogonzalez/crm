@@ -1,14 +1,20 @@
 {% extends "base.html" %}
-{% block title %} Delete Department {% endblock %}
+{% block title %} Delete User {% endblock %}
 
 {% block content %}
+<div class="card">
+	<div class="card-header">
+    Delete Ticket
+    </div>
+    <div class="card-body">
+		<form method="post" style="text-align: center;">
+			{% csrf_token %}
 
-	<form method="post">
-		{% csrf_token %}
-
-		<h3>Do you want to delete "{{object.usr_id}}" User?</h3>
-		<button class="btn btn-danger" type="submit">Delete</button>
-		<a class="btn btn-primary" href="/Users">regresar</a>
-	</form>
+			<h5>Do you want to delete "{{object.usr_id}}" User?</h5>
+			<button class="btn btn-danger" type="submit">Delete</button>
+			<a class="btn btn-primary" href="/Users">Go Back</a>
+		</form>
+	</div>
+</div>
 
 {% endblock %}

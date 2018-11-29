@@ -1,20 +1,21 @@
 {% extends "base.html" %}
-{% block title %}Delete Department{% endblock %}
+{% block title %}Delete Contact{% endblock %}
 
 {% block content %}
 
 <div class="card">
 	<div class="card-header">
-    Delete Ticket
+    Delete Company
     </div>
     <div class="card-body">
-		<form method="post"  style="text-align: center;">
+		<form method="post" style="text-align: center;">
 			{% csrf_token %}
 
-			<h5>Do you want to delete"{{object.dep_name}}" department?</h5>
+			<h5>Do you want to delete"{{object.cmp_name}}" company?</h5>
 			<button class="btn btn-danger" type="submit">Delete</button>
-			<a class="btn btn-primary" href="/Departments">Go Bacj</a>
+			<a class="btn btn-primary" href="/Companies">Go Back</a>
 		</form>
 	</div>
 </div>
+
 {% endblock %}

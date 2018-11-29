@@ -21,9 +21,9 @@
 					<th>Start Date</th>
 					<th>Target Date</th>
 					<th>Finish Date</th>
-					<th>User</th>
-
-					<th>. . .</th>
+					<th>User on charge</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</thead>
 				<tbody>
 					{% for Ticket in object_list %}
@@ -35,8 +35,8 @@
 							<td>{{Ticket.tck_targetDate}}</td>
 							<td>{{Ticket.tck_finishDate}}</td>
 							<td>{{Ticket.tck_ust_inCharge}}</td>
-							<td><a class="btn btn-warning" href="Edit_Ticket/{{Ticket.tck_id}}">Editar</a></td>
-							<td><a class="btn btn-danger" href="Delete_Ticket/{{Ticket.tck_id}}">Eliminar</a></td>
+							<td><a class="btn btn-warning" href="Edit_Ticket/{{Ticket.tck_id}}">Edit</a></td>
+							<td><a class="btn btn-danger" href="Delete_Ticket/{{Ticket.tck_id}}">Delete</a></td>
 						</tr>
 					{% empty%}
 					<div class="alert alert-danger" role="alert">

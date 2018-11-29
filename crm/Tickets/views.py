@@ -38,17 +38,17 @@ class Create_Ticket(generic.CreateView):
 class Edit_Ticket(generic.UpdateView):
 	template_name = "Tickets/Edit_Ticket.html"
 	model = Tickets
-	fields = [""]
+	fields = ["tck_description", "tck_targetDate", "tck_usr_inCharge"]
 	success_url = "/Tickets"
 
 class Delete_Ticket(generic.DeleteView):
-	template_name = 'Tickets/.html'
+	template_name = 'Tickets/Delete_Ticket.html'
 	model = Tickets
 	success_url = ''
 
 class Detail_Ticket(generic.DetailView):
 	template_name = "Tickets/Detail_Ticket.html"
-	#model = Progress
+	model = Progress
 		
 	def get_context_data(self, *args, **kwargs):
 		context = super(Detail_Ticket, self).get_context_data(*args, **kwargs)
@@ -81,13 +81,30 @@ class Delete_Task(generic.DeleteView):
 
 class Create_Ticket_Progress(generic.CreateView):
 	template_name = 'Tickets/Create_Ticket_Progress.html'
-	model = Tasks
-	form_class = FormTasks
+	model = Progress
+	form_class = FormProgress
 	success_url = "/Tickets"
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(Create_Ticket_Progress, self).get_context_data(*args, **kwargs)
 		context["create_form"] = FormProgress()
+		return context
+
+class List_Progress_Ticket (generic.ListView):
+	template_name = "Tickets/index.html"
+	queryset = Progress.objects.all()
+
+	def get_queryset(self, *args, **kwargs):
+		qs = Progress.objects.all()
+		print(self.request.GET)
+		query = self.request.GET.get("q", None)
+		if query is not None:
+			qs = qs.filter(Q(tck_id__icontains=query) | Q(tck_name__icontains=query))
+		return qs
+		
+	def get_context_data(self, *args, **kwargs):
+		context = super(Index, self).get_context_data(*args, **kwargs)
+		context["create_form"] = FormTickets()
 		return context
 
 class Delete_Ticket_Progress(generic.DeleteView):

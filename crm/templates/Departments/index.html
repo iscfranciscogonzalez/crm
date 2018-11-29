@@ -16,12 +16,12 @@
 			<table id="datos" class="table table-striped">
 				<thead class="thead-dark">
 					<th>Name</th>
-					<th>Delete, </th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</thead>
 				<tbody>
 					{% for Departamento in object_list %}
 						<tr>
-							<td>{{Departamento.dep_id}}</td>
 							<td>{{Departamento.dep_name}}</td>
 							<td><a class="btn btn-warning" href="Edit_Department/{{Departamento.dep_id}}">Editar</a></td>
 							<td><a class="btn btn-danger" href="Delete_Department/{{Departamento.dep_id}}">Eliminar</a></td>
