@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 
-{% block title %}Tickets{% endblock %}
+{% block title %}Companies{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -12,31 +12,28 @@
 			Filtrar: <input class="form-control" id="buscar" type="text" placeholder="Search..">
 			<br>
 			</div>
-			<table class="table table-striped"><thead><th class="bg-primary" style="text-align: center;"><h5><b>Tickets</b></h5></h1></th></thead></table>
+			<table class="table table-striped"><thead><th class="bg-primary" style="text-align: center;"><h5><b>Contacts</b></h5></h1></th></thead></table>
 			<table id="datos" class="table table-striped">
 				<thead class="thead-dark">
 					<th>Name</th>
-					<th>Description</th>
-					<th>Create Date</th>
-					<th>Start Date</th>
-					<th>Target Date</th>
-					<th>Finish Date</th>
-					<th>User</th>
+					<th>Company</th>
+					<th>Department</th>
+					<th>Phone</th>
+					<th>Email</th>
 
 					<th>. . .</th>
 				</thead>
 				<tbody>
-					{% for Ticket in object_list %}
+					{% for Contacts in object_list %}
 						<tr>
-							<td>{{Ticket.tck_name}}</td>
-							<td>{{Ticket.tck_description}}</td>
-							<td>{{Ticket.tck_createDate}}</td>
-							<td>{{Ticket.tck_startDate}}</td>
-							<td>{{Ticket.tck_targetDate}}</td>
-							<td>{{Ticket.tck_finishDate}}</td>
-							<td>{{Ticket.tck_ust_inCharge}}</td>
-							<td><a class="btn btn-warning" href="Edit_Ticket/{{Ticket.tck_id}}">Editar</a></td>
-							<td><a class="btn btn-danger" href="Delete_Ticket/{{Ticket.tck_id}}">Eliminar</a></td>
+							<td>{{Contacts.cpc_name}}</td>
+							<td>{{Contacts.cpc_cmp_id}}</td>
+							<td>{{Contacts.cpc_departament}}</td>
+							<td>{{Contacts.cpc_phone}}</td>
+							<td>{{Contacts.cpc_email}}</td>
+							
+							<td><a class="btn btn-warning" href="Edit_Contact/{{Contacts.cpc_id}}">Edit</a></td>
+							<td><a class="btn btn-danger" href="Delete_Contact/{{Contacts.cpc_id}}">Delete</a></td>
 						</tr>
 					{% empty%}
 					<div class="alert alert-danger" role="alert">

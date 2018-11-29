@@ -22,4 +22,8 @@ from home import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Index, name='Home'),
+    path('Companies/', include('Companies.urls', namespace='')),
+    path('Departments/', include('Departments.urls', namespace='')),
+    path('Tickets/', include('Tickets.urls', namespace='')),
+    path('Users/', include('Users.urls', namespace='')),
 ]

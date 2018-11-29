@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link href="{% static  'bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
-	<title>Document</title>
+	<title>{%block title%}{% endblock %}</title>
 </head>
 <body>
 	{% include "navbar.html" %}

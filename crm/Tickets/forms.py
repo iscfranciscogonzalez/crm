@@ -13,5 +13,5 @@ class FormProgress(forms.ModelForm):
 
 class FormTasks(forms.ModelForm):
 	class Meta:
-		model = Task
+		model = Tasks
 		fields = '__all__'

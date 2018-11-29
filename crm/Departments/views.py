@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.views import generic
 
 from .models import Departments
-from .form import FormDepartments
+from .forms import FormDepartments
 # Create your views here.
 
 class Index(generic.ListView):
@@ -28,20 +28,21 @@ class Create_Department(generic.CreateView):
 	template_name = 'Departments/Create_Department.html'
 	model = Departments
 	form_class = FormDepartments
-	success_url = "/"
+	success_url = "/Departments"
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(Index, self).get_context_data(*args, **kwargs)
+		context = super(Create_Department, self).get_context_data(*args, **kwargs)
 		context["create_form"] = FormDepartments()
-			return context
+		return context
 
 class Edit_Department(generic.UpdateView):
 	template_name = "Departments/Edit_Department.html"
-	model = Tweet
-	fields = [""]
-	success_url = "/tweet/list_tweet/"
+	model = Departments
+	fields = ["dep_name"]
+	success_url = "/Departments"
 
 class Delete_Department(generic.DeleteView):
-	template_name = 'Departments/.html'
-	model = Articulos
-	success_url = ''
+	template_name = 'Departments/Delete_Department.html'
+	model = Departments
+	success_url = '/Departments'
+	

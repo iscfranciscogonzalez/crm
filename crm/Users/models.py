@@ -10,7 +10,13 @@ class UsersTypes(models.Model):
 		return self.uty_type
 
 class Users(models.Model):
-	usr_id = models.AutoField(primary_key=True)
+	types = (
+			('User', 'User'),
+			('Supervisor', 'Supervisor'),
+
+		)
+
+	usr_id = models.CharField(primary_key=True,max_length=25)
 	usr_name = models.CharField(max_length=256, null=False)
 	usr_lastname = models.CharField(max_length=256, null=False)
 	usr_phone = models.CharField(max_length=256, null=False)
@@ -18,7 +24,7 @@ class Users(models.Model):
 	usr_address = models.CharField(max_length=256, null=False)
 	usr_city = models.CharField(max_length=256, null=False)
 	usr_state = models.CharField(max_length=256, null=False)
-	usr_uty_id = models.ForeignKey(UsersTypes, on_delete=models.CASCADE)
+	usr_type = models.CharField(max_length=256, choices=types)
 	usr_dep_id = models.ForeignKey(Departments, on_delete=models.CASCADE)
 
 	def __str__(self):

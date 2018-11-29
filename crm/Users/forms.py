@@ -6,7 +6,7 @@ class FormUsers(forms.ModelForm):
 		model = Users
 		fields = '__all__'
 
-class FormUserTypes
+class FormUserTypes(forms.ModelForm):
 	class Meta:
 		model = UsersTypes
 		fields = '__all__'

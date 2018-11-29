@@ -1,1 +1,13 @@
-Create_Department.html
+{% extends "base.html" %}
+
+{% block title %}Create Department{% endblock %}
+
+{% block content %}
+	<form method="POST">
+		{% csrf_token%}
+		{{ form.as_p }}
+		<button type="submit" class="btn btn-primary" value="{{ btn_title }}">Create</button>
+	</form>
+
+	{{error_message}}
+{% endblock %}

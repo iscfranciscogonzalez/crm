@@ -1,1 +1,65 @@
-index.html
+{% extends "base.html" %}
+
+
+{% block title %}Companies{% endblock %}
+
+{% block content %}
+<div class="row">
+	
+		<div class="col-md-1"></div>
+		<div class="col-md-10" style="margin-top: 20px;">
+			<div class="col-md-3" style="margin-left: -17px;">
+			Filtrar: <input class="form-control" id="buscar" type="text" placeholder="Search..">
+			<br>
+			</div>
+			<table class="table table-striped"><thead><th class="bg-primary" style="text-align: center;"><h5><b>Companies</b></h5></h1></th></thead></table>
+			<table id="datos" class="table table-striped">
+				<thead class="thead-dark">
+					<th>Name</th>
+					<th>Address</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Postal Code </th>
+					<th>Phone</th>
+					<th>Email</th>
+
+					<th>. . .</th>
+				</thead>
+				<tbody>
+					{% for Company in object_list %}
+						<tr>
+							<td>{{Company.cmp_name}}</td>
+							<td>{{Company.cmp_address}}</td>
+							<td>{{Company.cmp_city}}</td>
+							<td>{{Company.cmp_state}}</td>
+							<td>{{Company.cmp_postalCode}}</td>
+							<td>{{Company.cmp_phone}}</td>
+							<td>{{Company.cmp_email}}</td>
+							
+							<td><a class="btn btn-warning" href="Edit_Company/{{Company.cmp_id}}">Edit</a></td>
+							<td><a class="btn btn-danger" href="Delete_Company/{{Company.cmp_id}}">Delete</a></td>
+						</tr>
+					{% empty%}
+					<div class="alert alert-danger" role="alert">
+					  NO EXISTEN REGISTROS
+					</div>
+					{% endfor %}
+				</tbody>
+			</table>
+
+		</div>
+		<div class="col-md-1"></div>
+	
+</div>
+<script>
+$(document).ready(function(){
+  $("#buscar").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#datos tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+{% endblock %}

@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.views import generic
 
 from .models import Tickets, Progress, Tasks
-from .form import FormTickets, FormProgress, FormTasks
+from .forms import FormTickets, FormProgress, FormTasks
 # Create your views here.
 
 class Index(generic.ListView):
@@ -28,10 +28,10 @@ class Create_Ticket(generic.CreateView):
 	template_name = 'Tickets/Create_Ticket.html'
 	model = Tickets
 	form_class = FormTickets
-	success_url = "/"
+	success_url = "/Tickets"
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(Index, self).get_context_data(*args, **kwargs)
+		context = super(Create_Ticket, self).get_context_data(*args, **kwargs)
 		context["create_form"] = FormTickets()
 		return context
 
@@ -39,7 +39,7 @@ class Edit_Ticket(generic.UpdateView):
 	template_name = "Tickets/Edit_Ticket.html"
 	model = Tickets
 	fields = [""]
-	success_url = "/tweet/list_tweet/"
+	success_url = "/Tickets"
 
 class Delete_Ticket(generic.DeleteView):
 	template_name = 'Tickets/.html'
@@ -51,7 +51,7 @@ class Detail_Ticket(generic.DetailView):
 	#model = Progress
 		
 	def get_context_data(self, *args, **kwargs):
-		context = super(Index, self).get_context_data(*args, **kwargs)
+		context = super(Detail_Ticket, self).get_context_data(*args, **kwargs)
 		print(self.kwargs)
 		query = self.request.GET.get("q", None)
 		context["Progress"] = Progress.objects.filter(tkp_tck_id=query)
@@ -61,10 +61,10 @@ class Create_Task(generic.CreateView):
 	template_name = 'Tickets/Create_Task.html'
 	model = Tasks
 	form_class = FormTasks
-	success_url = "/"
+	success_url = "/Tickets"
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(Index, self).get_context_data(*args, **kwargs)
+		context = super(Create_Task, self).get_context_data(*args, **kwargs)
 		context["create_form"] = FormTasks()
 		return context
 
@@ -72,25 +72,25 @@ class Edit_Task(generic.UpdateView):
 	template_name = "Tickets/Edit_Task.html"
 	model = Tasks
 	fields = [""]
-	success_url = "/"
+	success_url = "/Tickets"
 
 class Delete_Task(generic.DeleteView):
 	template_name = 'Tickets/Edit_Task.html'
 	model = Tasks
-	success_url = '/'
+	success_url = '/Tickets'
 
 class Create_Ticket_Progress(generic.CreateView):
 	template_name = 'Tickets/Create_Ticket_Progress.html'
 	model = Tasks
 	form_class = FormTasks
-	success_url = "/"
+	success_url = "/Tickets"
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(Index, self).get_context_data(*args, **kwargs)
+		context = super(Create_Ticket_Progress, self).get_context_data(*args, **kwargs)
 		context["create_form"] = FormProgress()
 		return context
 
 class Delete_Ticket_Progress(generic.DeleteView):
 	template_name = 'Tickets/Delete_Ticket_Progress.html'
 	model = Progress
-	success_url = '/'	
+	success_url = '/Tickets'	

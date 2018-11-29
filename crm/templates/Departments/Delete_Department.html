@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Delete Department{% endblock %}
+
+{% block content %}
+
+	<form method="post">
+		{% csrf_token %}
+
+		<h3>Do you want to delete"{{object.dep_name}}" department?</h3>
+		<button class="btn btn-danger" type="submit">Delete</button>
+		<a class="btn btn-primary" href="/Departments">regresar</a>
+	</form>
+
+{% endblock %}
